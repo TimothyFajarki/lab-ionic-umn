@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Expenses</title>
+
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@4.7.4/dist/ionic/ionic.esm.js"></script>
+        <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core@4.7.4/dist/ionic/ionic.js"></script>
+        <script src="app.js"></script>
+         
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core@4.7.4/css/ionic.bundle.css"/>
+  
+        <style>
+            .header {
+                --background: #8873ff;
+                --color: white;
+            }
+            ion-card{
+                display: flex;
+                flex-direction: column;
+                width: 100% !important;
+                padding: 2%;
+            }
+            ion-grid{
+                width: 55%;
+            }
+            .float-right {
+                float: right
+            }
+        </style>
+    </head>
+
+    <body onload="init()"> 
+        <ion-app> 
+            <ion-header>
+                <ion-toolbar class="header">
+                    <ion-title style="text-align: center"></ion-icon>Budget Planner</ion-title>
+                </ion-toolbar>
+            </ion-header>
+
+            <ion-grid>
+                <ion-row>
+                    <ion-card>
+                        <ion-card-header> 
+                            <ion-card-title><b>Input Pengeluaran</b></ion-card-title>
+                        </ion-card-header>
+                    
+                        <ion-card-content>
+                            <ion-item> 
+                                <ion-input required id="name" placeholder="Nama Pengeluaran" type="text"></ion-input> 
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-input required id="expense" placeholder="Jumlah Pengeluaran" type="number"></ion-input>
+                            </ion-item> 
+                        </ion-card-content slot="end">
+                        <ion-button class="float-right" onclick="add()"><ion-icon name="add"></ion-icon>Tambah</ion-button>
+                        <ion-button class="float-right" color="danger" onclick="destroy()"><ion-icon name="close"></ion-icon>Hapus</ion-button>
+                    </ion-card> 
+                </ion-row>
+
+                <ion-row>
+                    <ion-col>
+                        <ion-list id='list'></ion-list>
+                        <br><br>
+                        <ion-card-title>
+                        Total of the spending <span id="total">0</span>
+                        </ion-card-title>
+                    </ion-col>
+                </ion-row>
+            </ion-grid> 
+            <ion-alert-controller></ion-alert-controller>
+        </ion-app>
+
+    </body>
+</html>
